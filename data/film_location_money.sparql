@@ -1,0 +1,9 @@
+# Список фильмов с их кассовыми сборами, актерами и жанрами, отсортированный по убыванию кассовых сборов
+SELECT ?film ?filmLabel ?locationLabel ?boxOffice
+WHERE {
+  ?film wdt:P31 wd:Q11424;  # ?film является экземпляром фильма 
+        wdt:P915 ?location;  # ?film имеет location ?location
+        wdt:P2142 ?boxOffice.  # ?film имеет кассовые сборы ?boxOffice
+       
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "ru,en". }  # получаем метки для объектов
+}
